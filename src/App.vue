@@ -14,7 +14,7 @@
     },
     data() {
       return {
-        quotesAdded: 3
+        quotesAdded: 0
       }
     }
   }
