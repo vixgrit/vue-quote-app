@@ -2,8 +2,8 @@
   <div class="col-xs-12">
     <h3>Quotes Added</h3>
     <div class="progress-bar">
-      <div v-if="quotesAdded > 0" class="progress-status" :style="progressStatus">
-        <span class="progress-text">{{quotesAdded}} / 10</span>
+      <div v-if="quoteCount > 0" class="progress-status" :style="{ width: progressStatus}">
+        <span class="progress-text">{{quoteCount}} / {{maxQuotes}}</span>
       </div>
       <div v-else>
         <span :style="noQuotes">0 / 10</span>
@@ -14,17 +14,19 @@
 
 <script>
 export default {
-  props: ['quotesAdded'],
+  props: ['quoteCount', 'maxQuotes'],
   data() {
     return {
-      progressStatus: {
-        width: this.quotesAdded / 10 * 100 + '%'
-      },
       noQuotes: {
         'text-align': 'center',
         'color': 'black',
         'line-height': '24px'
       }
+    }
+  },
+  computed: {
+    progressStatus() {
+      return this.quoteCount / this.maxQuotes * 100 + '%';
     }
   }
 }
@@ -42,6 +44,7 @@ export default {
     border-radius: 15px;
     height: 24px;
     background-color: #6ca6cd;
+    transition: width 1s;
   }
 
   .progress-text {

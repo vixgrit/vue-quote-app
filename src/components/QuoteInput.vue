@@ -9,11 +9,21 @@
 <script>
 import { eventBus } from './../main';
 export default {
+  props: ['numOfQuotes', 'maxQuotes'],
   methods: {
     submitQuote() {
       const quoteBox = document.querySelector('.quoteBox');
-      eventBus.$emit('quoteSubmitted', quoteBox.value);
-      quoteBox.value = '';
+      if (this.numOfQuotes >= this.maxQuotes) {
+        quoteBox.value = '';
+        return alert('You\'ve reached the quote limit! Please delete a quote first.');
+      }
+      else if (quoteBox.value.trim() === ''){
+        return alert('Your quote must contain some text!');
+      }
+      else {
+        eventBus.$emit('quoteSubmitted', quoteBox.value);
+        quoteBox.value = '';
+      }
     }
   }
 }
@@ -35,6 +45,7 @@ export default {
     display: block;
     margin: 0 auto;
     resize: none;
+    border: 1px solid #ddd;
   }
 
   button {

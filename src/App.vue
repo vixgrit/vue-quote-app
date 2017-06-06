@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="container">
     <div class="row">
-      <progress-bar></progress-bar>
+      <progress-bar :quoteCount="quotesAdded.length" :maxQuotes="maxQuotes"></progress-bar>
     </div>
     <div class="row">
-      <quote-input></quote-input>
+      <quote-input :numOfQuotes="quotesAdded.length" :maxQuotes="maxQuotes"></quote-input>
       <quote-display :quotes="quotesAdded" @quoteDeleted="deleteQuote"></quote-display>
       <div class="col-sm-12 text-center">
         <div class="alert alert-info">Info: Click on a quote to delete it.</div>
@@ -18,7 +18,6 @@
   import ProgressBar from './components/ProgressBar.vue';
   import QuoteInput from './components/QuoteInput.vue';
   import QuoteDisplay from './components/QuoteDisplay.vue';
-  import Quote from './components/Quote.vue';
   export default {
     components: {
       'progress-bar': ProgressBar,
@@ -27,7 +26,7 @@
     },
     data() {
       return {
-        quotesAdded: ['This is a long test quote'],
+        quotesAdded: ['An example quote...'],
         maxQuotes: 10
       }
     },
