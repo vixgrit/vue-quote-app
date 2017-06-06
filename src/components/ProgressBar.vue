@@ -22,7 +22,7 @@ export default {
       },
       noQuotes: {
         'text-align': 'center',
-        color: 'black',
+        'color': 'black',
         'line-height': '24px'
       }
     }

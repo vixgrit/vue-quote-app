@@ -1,14 +1,21 @@
 <template lang="html">
-  <div class="col-xs-12">
+  <div>
     <span>Quote</span>
-    <textarea name="name" rows="4"></textarea>
-    <button type="button" class="btn btn-primary">Add Quote</button>
+    <textarea class="quoteBox" name="name" rows="4"></textarea>
+    <button @click="submitQuote" type="button" class="btn btn-primary">Add Quote</button>
   </div>
 </template>
 
 <script>
+import { eventBus } from './../main';
 export default {
-
+  methods: {
+    submitQuote() {
+      const quoteBox = document.querySelector('.quoteBox');
+      eventBus.$emit('quoteSubmitted', quoteBox.value);
+      quoteBox.value = '';
+    }
+  }
 }
 </script>
 
