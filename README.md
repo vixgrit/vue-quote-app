@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+gh-pages link:
+https://vixgrit.github.io/vue-quote-app/
+
 ## Build Setup
 
 ``` bash
